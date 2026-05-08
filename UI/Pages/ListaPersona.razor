@@ -1,0 +1,48 @@
+﻿@page "/lista-personas"
+@using tp2ProgramacionIII.DAL.Models
+@inject tp2ProgramacionIII.BL.Services.PersonaService PersonaService
+@using tp2ProgramacionIII.UI.Layout
+
+<AuthGuard>
+    <h3>Lista de Personas</h3>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Foto</th>
+                <th>NombreCompleto</th>
+                <th>Email</th>
+                <th>Domicilio</th>
+                <th>FechaNacimiento</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var persona in personas)
+            {
+                <tr>
+                    <td>
+                        <img src="images/persona.png"
+                             alt="Foto de @persona.NombreCompleto"
+                             width="60" height="60"
+                             class="rounded-circle" />
+
+                    </td>
+                    <td>@persona.NombreCompleto</td>
+                    <td>@persona.Email</td>
+                    <td>@persona.Domicilio</td>
+                    <td>@persona.FechaNacimiento.ToShortDateString()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</AuthGuard>
+
+@code {
+    private List<Persona> personas = new();
+
+    protected override void OnInitialized()
+    {
+        personas = PersonaService.ObtenerPersonas();
+    }
+}
+

@@ -1,0 +1,15 @@
+# Carpetas de compilación y VS
+bin/
+obj/
+.vs/
+
+# Archivos de usuario
+*.user
+*.suo
+
+# Ejecutables y DLLs
+*.dll
+*.exe
+
+# Logs
+*.log

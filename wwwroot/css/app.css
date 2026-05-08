@@ -1,0 +1,112 @@
+/* === Tipografía y fondo general === */
+html, body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #F9FAFB; /* Gris muy claro para el fondo principal */
+    color: #374151; /* Gris piedra para el texto */
+}
+
+/* === Encabezados === */
+h1, h3, h4 {
+    color: #556B2F; /* Verde mantra/oliva intenso */
+}
+
+/* === Links generales === */
+a, .btn-link {
+    color: #9ACD32; /* Verde claro para enlaces */
+}
+
+/* === Botón primario (Guardar) === */
+.btn-primary {
+    color: #fff; /* Texto blanco */
+    background-color: #9ACD32; /* Verde claro brillante */
+    border-color: #6B8E23; /* Verde oliva más oscuro */
+    font-weight: 600;
+}
+
+    .btn-primary:hover {
+        background-color: #6B8E23; /* Hover en verde oliva */
+        border-color: #556B2F; /* Borde verde mantra */
+    }
+
+/* === Botón secundario (Cancelar) === */
+.btn-secondary {
+    color: #fff; /* Texto blanco */
+    background-color: #D2691E; /* Naranja terracota */
+    border-color: #A0522D; /* Marrón terracota más oscuro */
+    font-weight: 600;
+}
+
+    .btn-secondary:hover {
+        background-color: #A0522D; /* Hover más profundo */
+        border-color: #8B4513; /* Marrón oscuro */
+    }
+
+/* === Formularios === */
+.form-control {
+    border-radius: 6px; /* Bordes redondeados */
+    border: 1px solid #D1D5DB; /* Gris claro para bordes */
+    padding: 0.6rem;
+}
+
+    .form-control:focus {
+        border-color: #9ACD32; /* Verde claro al foco */
+        box-shadow: 0 0 0 0.2rem rgba(154, 205, 50, 0.25); /* Sombra verde clara */
+    }
+
+/* === Validaciones === */
+.valid.modified:not([type=checkbox]) {
+    outline: 1px solid #9ACD32; /* Verde claro para campos válidos */
+}
+
+.invalid {
+    outline: 1px solid #B22222; /* Rojo para campos inválidos */
+}
+
+.validation-message {
+    color: #B22222; /* Rojo para mensajes de error */
+    font-size: 0.9rem;
+}
+
+/* === Barra superior del NavMenu === */
+.top-row.navbar {
+    background: linear-gradient(180deg, #556B2F, #6B8E23) !important;
+    color: #fff;
+}
+.top-row.ps-3.navbar.navbar-dark {
+    background: linear-gradient(180deg, #556B2F, #6B8E23) !important;
+    color: #fff;
+}
+
+/* === Marca del sistema (TP2 Programación III) === */
+.navbar-brand {
+    color: #fff; /* Blanco */
+    font-weight: bold;
+}
+
+/* === Botón hamburguesa (toggle) === */
+.navbar-toggler {
+    border-color: #9ACD32; /* Verde claro */
+}
+
+.navbar-toggler-icon {
+    background-color: #9ACD32; /* Verde claro */
+}
+
+/* === Links del NavMenu === */
+.nav-link {
+    color: #fff; /* Blanco por defecto */
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+}
+
+    .nav-link:hover {
+        color: #9ACD32; /* Verde claro al pasar el mouse */
+        background-color: rgba(255,255,255,0.1); /* Fondo suave */
+        border-radius: 4px;
+    }
+
+    .nav-link.active {
+        color: #fff;
+        background-color: #6B8E23; /* Verde oliva más claro */
+        border-radius: 4px;
+    }

@@ -1,0 +1,57 @@
+﻿@page "/"
+@using System.ComponentModel.DataAnnotations
+@inject NavigationManager NavigationManager
+@inject tp2ProgramacionIII.BL.Services.AuthState AuthState
+
+<h3>Login</h3>
+
+<EditForm Model="@loginModel" OnValidSubmit="OnLogin">
+    <DataAnnotationsValidator />
+
+    <div class="mb-3">
+        <label>Usuario:</label>
+        <InputText @bind-Value="loginModel.Usuario" class="form-control" />
+        <ValidationMessage For="@(() => loginModel.Usuario)" />
+    </div>
+
+    <div class="mb-3">
+        <label>Contraseña:</label>
+        <InputText @bind-Value="loginModel.Password" type="password" class="form-control" />
+        <ValidationMessage For="@(() => loginModel.Password)" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Ingresar</button>
+</EditForm>
+
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    <div class="alert alert-danger mt-3">@errorMessage</div>
+}
+
+@code {
+    private LoginModel loginModel = new();
+    private string? errorMessage;
+
+    private void OnLogin()
+    {
+        if (loginModel.Usuario == "alumno" && loginModel.Password == "1234")
+        {
+            AuthState.SetAuth(true);
+            NavigationManager.NavigateTo("/home");
+        }
+        else
+        {
+            AuthState.SetAuth(false);
+            errorMessage = "Usuario o contraseña incorrectos";
+        }
+    }
+
+    public class LoginModel
+    {
+        [Required(ErrorMessage = "El usuario es obligatorio")]
+        public string Usuario { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "La contraseña es obligatoria")]
+        public string Password { get; set; } = string.Empty;
+    }
+}

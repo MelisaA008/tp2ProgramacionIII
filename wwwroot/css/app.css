@@ -1,8 +1,8 @@
 /* === Tipografía y fondo general === */
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    background-color: #F9FAFB; /* Gris muy claro para el fondo principal */
-    color: #374151; /* Gris piedra para el texto */
+    background-color: #F9FAFB; /* Gris muy claro */
+    color: #374151; /* Gris piedra para texto */
 }
 
 /* === Encabezados === */
@@ -12,101 +12,129 @@ h1, h3, h4 {
 
 /* === Links generales === */
 a, .btn-link {
-    color: #9ACD32; /* Verde claro para enlaces */
+    color: #9ACD32; /* Verde claro */
 }
 
 /* === Botón primario (Guardar) === */
 .btn-primary {
-    color: #fff; /* Texto blanco */
+    color: #fff;
     background-color: #9ACD32; /* Verde claro brillante */
-    border-color: #6B8E23; /* Verde oliva más oscuro */
+    border-color: #6B8E23; /* Verde oliva */
     font-weight: 600;
+    border-radius: 8px;
+    transition: background-color 0.2s ease-in-out;
 }
 
     .btn-primary:hover {
-        background-color: #6B8E23; /* Hover en verde oliva */
-        border-color: #556B2F; /* Borde verde mantra */
+        background-color: #6B8E23;
+        border-color: #556B2F;
     }
 
 /* === Botón secundario (Cancelar) === */
 .btn-secondary {
-    color: #fff; /* Texto blanco */
-    background-color: #D2691E; /* Naranja terracota */
-    border-color: #A0522D; /* Marrón terracota más oscuro */
+    color: #fff;
+    background-color: #D2691E; /* Terracota */
+    border-color: #A0522D; /* Marrón terracota */
     font-weight: 600;
+    border-radius: 8px;
 }
 
     .btn-secondary:hover {
-        background-color: #A0522D; /* Hover más profundo */
-        border-color: #8B4513; /* Marrón oscuro */
+        background-color: #A0522D;
+        border-color: #8B4513;
     }
 
 /* === Formularios === */
 .form-control {
-    border-radius: 6px; /* Bordes redondeados */
-    border: 1px solid #D1D5DB; /* Gris claro para bordes */
+    border-radius: 6px;
+    border: 1px solid #D1D5DB;
     padding: 0.6rem;
 }
 
     .form-control:focus {
-        border-color: #9ACD32; /* Verde claro al foco */
-        box-shadow: 0 0 0 0.2rem rgba(154, 205, 50, 0.25); /* Sombra verde clara */
+        border-color: #9ACD32;
+        box-shadow: 0 0 0 0.2rem rgba(154, 205, 50, 0.25);
     }
 
 /* === Validaciones === */
 .valid.modified:not([type=checkbox]) {
-    outline: 1px solid #9ACD32; /* Verde claro para campos válidos */
+    outline: 1px solid #9ACD32;
 }
 
 .invalid {
-    outline: 1px solid #B22222; /* Rojo para campos inválidos */
+    outline: 1px solid #B22222;
 }
 
 .validation-message {
-    color: #B22222; /* Rojo para mensajes de error */
+    color: #B22222;
     font-size: 0.9rem;
 }
 
 /* === Barra superior del NavMenu === */
-.top-row.navbar {
-    background: linear-gradient(180deg, #556B2F, #6B8E23) !important;
-    color: #fff;
-}
+.top-row.navbar,
 .top-row.ps-3.navbar.navbar-dark {
     background: linear-gradient(180deg, #556B2F, #6B8E23) !important;
     color: #fff;
 }
 
-/* === Marca del sistema (TP2 Programación III) === */
+/* === Marca del sistema === */
 .navbar-brand {
-    color: #fff; /* Blanco */
+    color: #fff;
     font-weight: bold;
 }
 
-/* === Botón hamburguesa (toggle) === */
+/* === Botón === */
 .navbar-toggler {
-    border-color: #9ACD32; /* Verde claro */
+    border-color: #9ACD32;
 }
 
 .navbar-toggler-icon {
-    background-color: #9ACD32; /* Verde claro */
+    background-color: #9ACD32;
 }
+
+/* === Sidebar lateral === */
+.sidebar {
+    width: 250px;
+    background: linear-gradient(180deg, #556B2F, #6B8E23) !important; /* verde mantra → verde oliva */
+    min-height: 100vh;
+    color: #fff;
+    box-shadow: 2px 0 6px rgba(0,0,0,0.2);
+}
+
 
 /* === Links del NavMenu === */
 .nav-link {
-    color: #fff; /* Blanco por defecto */
+    color: #fff;
     font-weight: 500;
     padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
 }
 
     .nav-link:hover {
-        color: #9ACD32; /* Verde claro al pasar el mouse */
-        background-color: rgba(255,255,255,0.1); /* Fondo suave */
-        border-radius: 4px;
+        color: #9ACD32;
+        background-color: rgba(255,255,255,0.1);
+        transform: translateX(5px);
     }
 
     .nav-link.active {
         color: #fff;
-        background-color: #6B8E23; /* Verde oliva más claro */
-        border-radius: 4px;
+        background-color: #6B8E23;
+    }
+
+/* === Saludo card === */
+.saludo-card {
+    background: linear-gradient(135deg, #1E3A8A, #065F46); /* azul → verde */
+    color: #FFFFFF;
+    padding: 15px 20px;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    margin-top: 15px;
+    transition: transform 0.2s ease-in-out;
+}
+
+    .saludo-card:hover {
+        transform: scale(1.03);
     }

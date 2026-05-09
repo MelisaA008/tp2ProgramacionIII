@@ -1,8 +1,10 @@
 ﻿@using Microsoft.AspNetCore.Components
 
-<h4>Bienvenido al sistema, @Nombre</h4>
-
 @code {
     [Parameter]
     public string Nombre { get; set; } = string.Empty;
 }
+
+<div class="saludo-card">
+    Bienvenido al sistema, <strong>@Nombre</strong>
+</div>

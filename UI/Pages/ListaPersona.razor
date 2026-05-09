@@ -1,48 +1,34 @@
 ﻿@page "/lista-personas"
 @using tp2ProgramacionIII.DAL.Models
-@inject tp2ProgramacionIII.BL.Services.PersonaService PersonaService
-@using tp2ProgramacionIII.UI.Layout
+@inject tp2ProgramacionIII.DAL.Repositories.PersonaRepository PersonaRepo
 
-<AuthGuard>
-    <h3>Lista de Personas</h3>
+<h3>Lista de Personas</h3>
 
-    <table class="table table-striped">
-        <thead>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Foto</th>
+            <th>Nombre Completo</th>
+            <th>Email</th>
+            <th>Domicilio</th>
+            <th>Fecha de Nacimiento</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var persona in PersonaRepo.ObtenerPersonas())
+        {
             <tr>
-                <th>Foto</th>
-                <th>NombreCompleto</th>
-                <th>Email</th>
-                <th>Domicilio</th>
-                <th>FechaNacimiento</th>
+                <td>
+                    <img src="@persona.RutaImagen"
+                         alt="Foto de @persona.NombreCompleto"
+                         width="60" height="60"
+                         class="rounded-circle" />
+                </td>
+                <td>@persona.NombreCompleto</td>
+                <td>@persona.Email</td>
+                <td>@persona.Domicilio</td>
+                <td>@persona.FechaNacimiento.ToShortDateString()</td>
             </tr>
-        </thead>
-        <tbody>
-            @foreach (var persona in personas)
-            {
-                <tr>
-                    <td>
-                        <img src="images/persona.png"
-                             alt="Foto de @persona.NombreCompleto"
-                             width="60" height="60"
-                             class="rounded-circle" />
-
-                    </td>
-                    <td>@persona.NombreCompleto</td>
-                    <td>@persona.Email</td>
-                    <td>@persona.Domicilio</td>
-                    <td>@persona.FechaNacimiento.ToShortDateString()</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-</AuthGuard>
-
-@code {
-    private List<Persona> personas = new();
-
-    protected override void OnInitialized()
-    {
-        personas = PersonaService.ObtenerPersonas();
-    }
-}
-
+        }
+    </tbody>
+</table>

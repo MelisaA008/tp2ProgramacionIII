@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 
 namespace tp2ProgramacionIII.DAL.Models
 {
@@ -7,12 +6,19 @@ namespace tp2ProgramacionIII.DAL.Models
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "El nombre y Apellido es obligatorio")]
-        public required string NombreCompleto { get; set; }
-        public required string Email { get; set; }
-        public required string Domicilio { get; set; }
+        // nombre completo
+        public string? NombreCompleto { get; set; }
+
+        // email
+        public string? Email { get; set; }
+
+        // domicilio
+        public string? Domicilio { get; set; }
+
+        // fecha de nacimiento
         public DateTime FechaNacimiento { get; set; }
-        public required string RutaImagen { get; set; } = "images/persona.png";
+
+        // ruta de imagen
+        public string? RutaImagen { get; set; } = "images/persona.png";
     }
-} 
-    
+}

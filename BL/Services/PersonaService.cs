@@ -14,7 +14,13 @@ namespace tp2ProgramacionIII.BL.Services
 
         public List<Persona> ObtenerPersonas()
         {
-            return _repo.GetPersonas();
+            return _repo.ObtenerPersonas(); 
+        }
+
+        public void AgregarPersona(Persona persona)
+        {
+            _repo.AgregarPersona(persona);
         }
     }
+
 }

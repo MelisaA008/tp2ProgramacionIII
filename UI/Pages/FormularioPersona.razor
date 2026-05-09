@@ -1,43 +1,41 @@
 ﻿@page "/formulario-persona"
 @using tp2ProgramacionIII.DAL.Models
-@using tp2ProgramacionIII.UI.Layout
+@inject NavigationManager NavigationManager
+@inject tp2ProgramacionIII.DAL.Repositories.PersonaRepository PersonaRepo
 
-<AuthGuard>
-    <h3>Formulario de Persona</h3>
+<h3>Formulario de Persona</h3>
 
-    <EditForm Model="@persona" OnValidSubmit="GuardarPersona">
-        <DataAnnotationsValidator />
-        <ValidationSummary />
+<EditForm Model="@persona" OnValidSubmit="GuardarPersona">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
 
+    <div class="mb-3">
+        <label>Nombre Completo:</label>
+        <InputText @bind-Value="persona.NombreCompleto" class="form-control" />
+        <ValidationMessage For="@(() => persona.NombreCompleto)" />
+    </div>
 
-        <div class="mb-3">
-            <label>Nombre Completo:</label>
-            <InputText @bind-Value="persona.NombreCompleto" class="form-control" />
-            <ValidationMessage For="@(() => persona.NombreCompleto)" />
-        </div>
+    <div class="mb-3">
+        <label>Email:</label>
+        <InputText @bind-Value="persona.Email" class="form-control" />
+        <ValidationMessage For="@(() => persona.Email)" />
+    </div>
 
-        <div class="mb-3">
-            <label>Email:</label>
-            <InputText @bind-Value="persona.Email" class="form-control" />
-            <ValidationMessage For="@(() => persona.Email)" />
-        </div>
+    <div class="mb-3">
+        <label>Domicilio:</label>
+        <InputText @bind-Value="persona.Domicilio" class="form-control" />
+        <ValidationMessage For="@(() => persona.Domicilio)" />
+    </div>
 
-        <div class="mb-3">
-            <label>Domicilio:</label>
-            <InputText @bind-Value="persona.Domicilio" class="form-control" />
-            <ValidationMessage For="@(() => persona.Domicilio)" />
-        </div>
+    <div class="mb-3">
+        <label>Fecha de Nacimiento:</label>
+        <InputDate @bind-Value="persona.FechaNacimiento" class="form-control" />
+        <ValidationMessage For="@(() => persona.FechaNacimiento)" />
+    </div>
 
-        <div class="mb-3">
-            <label>Fecha de Nacimiento:</label>
-            <InputDate @bind-Value="persona.FechaNacimiento" class="form-control" />
-            <ValidationMessage For="@(() => persona.FechaNacimiento)" />
-        </div>
-
-        <button type="submit" class="btn btn-primary">Guardar</button>
-        <button type="button" class="btn btn-secondary" @onclick="Cancelar">Cancelar</button>
-    </EditForm>
-</AuthGuard>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <button type="button" class="btn btn-secondary" @onclick="Cancelar">Cancelar</button>
+</EditForm>
 
 @code {
     private Persona persona = new Persona
@@ -47,24 +45,17 @@
         Email = string.Empty,
         Domicilio = string.Empty,
         FechaNacimiento = DateTime.Now,
-        RutaImagen = "images/persona.png",
+        RutaImagen = "images/persona.png"
     };
 
     private void GuardarPersona()
     {
-        Console.WriteLine($"Guardado: {persona.NombreCompleto}");
+        PersonaRepo.AgregarPersona(persona);
+        NavigationManager.NavigateTo("/lista-personas");
     }
 
     private void Cancelar()
     {
-        persona = new Persona
-        {
-            Id = 0,
-            NombreCompleto = string.Empty,
-            Email = string.Empty,
-            Domicilio = string.Empty,
-            RutaImagen = "images/persona.png",
-            FechaNacimiento = DateTime.Now 
-        };
+        NavigationManager.NavigateTo("/lista-personas");
     }
 }

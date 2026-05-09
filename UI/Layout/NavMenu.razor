@@ -1,6 +1,6 @@
 ﻿@inject tp2ProgramacionIII.BL.Services.AuthState AuthState
 
-<div class="top-row ps-3 navbar navbar-dark">
+<div class="top-row ps-3 navbar navbar-dark nav-header">
     <div class="container-fluid">
         <a class="navbar-brand" href="">TP2 Programación III</a>
         <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
@@ -9,14 +9,17 @@
     </div>
 </div>
 
-<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+<div class="@NavMenuCssClass nav-container" @onclick="ToggleNavMenu">
     <nav class="flex-column">
-        <NavLink class="nav-link" href="/">
-            <span class="oi oi-home" aria-hidden="true"></span> Inicio
+        <NavLink class="nav-link" href="/login">
+            <span class="oi oi-account-login" aria-hidden="true"></span> Login
         </NavLink>
 
         @if (AuthState.IsAuthenticated)
         {
+            <NavLink class="nav-link" href="/home">
+                <span class="oi oi-home" aria-hidden="true"></span> Inicio
+            </NavLink>
             <NavLink class="nav-link" href="/lista-personas">
                 <span class="oi oi-list-rich" aria-hidden="true"></span> Lista de Personas
             </NavLink>
@@ -40,13 +43,11 @@
 
     protected override void OnInitialized()
     {
-        // Suscribirse al evento de cambio
         AuthState.OnChange += StateHasChanged;
     }
 
     public void Dispose()
     {
-        // Desuscribirse para evitar fugas de memoria
         AuthState.OnChange -= StateHasChanged;
     }
 }
